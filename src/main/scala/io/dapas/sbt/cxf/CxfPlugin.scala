@@ -95,6 +95,7 @@ object CxfPlugin extends sbt.AutoPlugin {
 
       def params(wsdl: Wsdl): Seq[String] =
         cxfFlags.value ++
+          wsdl.extraFlags ++
           wsdl.pkg.fold[Seq[String]](Seq.empty)(pkg => Seq("-p", pkg)) ++
           wsdl.implementations.map {
             case CxfImplementationType.Client => "-client"
