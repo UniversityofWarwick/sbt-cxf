@@ -1,1 +1,1 @@
-version in ThisBuild := "0.2.0-openjdk"
+version in ThisBuild := "0.2.1-openjdk"
