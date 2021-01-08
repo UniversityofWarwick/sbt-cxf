@@ -64,7 +64,10 @@ object CxfPlugin extends sbt.AutoPlugin {
       "org.apache.cxf" % "cxf-tools-wsdlto-core" % cxfVersion.value % CxfConfig.name,
       "org.apache.cxf" % "cxf-tools-common" % cxfVersion.value % CxfConfig.name,
       "org.apache.cxf" % "cxf-tools-wsdlto-databinding-jaxb" % cxfVersion.value % CxfConfig.name,
-      "org.apache.cxf" % "cxf-tools-wsdlto-frontend-jaxws" % cxfVersion.value % CxfConfig.name
+      "org.apache.cxf" % "cxf-tools-wsdlto-frontend-jaxws" % cxfVersion.value % CxfConfig.name,
+      // OpenJDK support
+      "jakarta.xml.bind" % "jakarta.xml.bind-api" % "2.3.3" % CxfConfig.name,
+      "jakarta.jws" % "jakarta.jws-api" % "2.1.0" % CxfConfig.name
     ),
     cxfFlags := Seq(
       "-validate",

@@ -52,6 +52,19 @@ scalacOptions in(Compile, doc) ++= {
   )
 }
 
+publishMavenStyle := true
+
+// Some of these settings are in the plugin too, but we can't depend on ourself...
+val WarwickPublicSnapshots: MavenRepository = "Nexus Public Snapshots" at "https://mvn.elab.warwick.ac.uk/nexus/repository/public-snapshots"
+val WarwickPublicReleases: MavenRepository = "Nexus Public Releases" at "https://mvn.elab.warwick.ac.uk/nexus/repository/public-releases"
+
+credentials += Credentials(Path.userHome / ".ivy2" / ".deployment-credentials")
+
+publishTo := {
+  if (isSnapshot.value) Some(WarwickPublicSnapshots)
+  else Some(WarwickPublicReleases)
+}
+
 // Release
 import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
 
